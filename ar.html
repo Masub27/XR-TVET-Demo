@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AR Demo for TVET</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+  <style>
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#f5f7fb;
+    }
+    .info{
+      position:fixed;
+      top:10px;
+      left:10px;
+      right:10px;
+      z-index:10;
+      background:rgba(255,255,255,0.92);
+      padding:12px 14px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.12);
+      color:#111827;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="info">
+    <strong>AR Demo for TVET</strong><br>
+    Point your camera at a Hiro marker. A 3D maintenance object and instruction label will appear.
+  </div>
 
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-marker preset="hiro">
+      <a-box position="0 0.5 0" depth="0.6" height="0.6" width="0.6" color="#2563eb"></a-box>
+      <a-cylinder position="-0.8 0.4 0" radius="0.15" height="0.8" color="#10b981"></a-cylinder>
+      <a-text value="Maintenance Step 1" position="0 1.2 0" align="center" color="#111827" width="4"></a-text>
+      <a-text value="Inspect wiring safely" position="0 0.95 0" align="center" color="#111827" width="4"></a-text>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+</html>
