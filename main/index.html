@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XR TVET Professor Demo</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;background:#f5f7fb;color:#1f2937}
+    .hero{padding:24px;text-align:center;background:linear-gradient(135deg,#dbeafe,#ffffff)}
+    .info{padding:20px;max-width:900px;margin:auto}
+    .card{background:white;border-radius:16px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);margin:16px 0}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>XR for TVET — Laptop Demo</h1>
+    <p>Virtual Electrical Safety Workshop + AI Tutor Concept</p>
+  </div>
+
+  <div class="info">
+    <div class="card">
+      <h2>🎯 What this demonstrates</h2>
+      <p>This single-file prototype shows your competence in browser-based VR/XR for TVET. Learners can explore a virtual workshop, inspect stations, and receive guided instruction.</p>
+    </div>
+
+    <div class="card">
+      <h2>🕶️ VR Workshop Scene</h2>
+      <p>Use mouse to look around. This runs directly on your laptop browser.</p>
+    </div>
+  </div>
+
+  <a-scene embedded style="height:500px; width:100%;">
+    <a-box position="-1 1 -3" rotation="0 45 0" text="value:PPE Station" color="#60a5fa"></a-box>
+    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#34d399"></a-cylinder>
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="8" color="#e5e7eb"></a-plane>
+    <a-text value="Electrical Wiring Board" position="-1 2 -3" align="center" color="#111827"></a-text>
+    <a-text value="AI Help Desk" position="1 2 -3" align="center" color="#111827"></a-text>
+    <a-sky color="#eef2ff"></a-sky>
+    <a-camera position="0 1.6 0"></a-camera>
+  </a-scene>
+
+  <div class="info">
+    <div class="card">
+      <h2>🎤 What to say to your professor</h2>
+      <p>“I developed a browser-based XR prototype for TVET practical training. It enables learners to explore a virtual workshop on standard laptops, reducing equipment costs while supporting safe pre-practice learning.”</p>
+    </div>
+  </div>
+</body>
+</html>
 
