@@ -1,10 +1,45 @@
-<a-assets>
-  <img id="panel" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1200">
-  <img id="ai" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200">
-</a-assets>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XR TVET Professor Demo</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;background:#f5f7fb;color:#1f2937}
+    .hero{padding:24px;text-align:center;background:linear-gradient(135deg,#dbeafe,#ffffff)}
+    .info{padding:20px;max-width:900px;margin:auto}
+    .card{background:white;border-radius:16px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);margin:16px 0}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>XR for TVET – Laptop Demo</h1>
+    <p>Virtual Electrical Safety Workshop + AI Tutor Concept</p>
+  </div>
 
-<a-image src="#panel" position="-1 1.5 -3" width="1.5" height="1"></a-image>
-<a-image src="#ai" position="1 1.5 -3" width="1.5" height="1"></a-image>
+  <div class="info">
+    <div class="card">
+      <h2>🎯 What this demonstrates</h2>
+      <p>This prototype shows a browser-based VR/XR workshop for TVET practical learning.</p>
+    </div>
+  </div>
 
-<a-text value="Electrical Station" position="-1 2.3 -3" align="center" color="#111827"></a-text>
-<a-text value="AI Tutor Desk" position="1 2.3 -3" align="center" color="#111827"></a-text>
+  <a-scene embedded style="height:500px; width:100%;">
+    <a-assets>
+      <img id="panel" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1200">
+      <img id="ai" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200">
+    </a-assets>
+
+    <a-image src="#panel" position="-1 1.5 -3" width="1.5" height="1"></a-image>
+    <a-image src="#ai" position="1 1.5 -3" width="1.5" height="1"></a-image>
+
+    <a-text value="Electrical Station" position="-1 2.3 -3" align="center" color="#111827"></a-text>
+    <a-text value="AI Tutor Desk" position="1 2.3 -3" align="center" color="#111827"></a-text>
+
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="8" color="#e5e7eb"></a-plane>
+    <a-sky color="#eef2ff"></a-sky>
+    <a-camera position="0 1.6 0"></a-camera>
+  </a-scene>
+</body>
+</html>
