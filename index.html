@@ -3,43 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XR TVET Professor Demo</title>
+  <title>XR TVET Interactive Workshop</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <style>
-    body{font-family:Arial,sans-serif;margin:0;background:#f5f7fb;color:#1f2937}
-    .hero{padding:24px;text-align:center;background:linear-gradient(135deg,#dbeafe,#ffffff)}
-    .info{padding:20px;max-width:900px;margin:auto}
-    .card{background:white;border-radius:16px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);margin:16px 0}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+    .hero {
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #dbeafe, #ffffff);
+    }
+    .hero h1 {
+      margin-bottom: 8px;
+    }
+    .hero p {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
   <div class="hero">
-    <h1>XR for TVET – Laptop Demo</h1>
-    <p>Virtual Electrical Safety Workshop + AI Tutor Concept</p>
+    <h1>XR for TVET – Interactive Workshop</h1>
+    <p>Click a station to move there and explore the workshop in 3D</p>
   </div>
 
-  <div class="info">
-    <div class="card">
-      <h2>🎯 What this demonstrates</h2>
-      <p>This prototype shows a browser-based VR/XR workshop for TVET practical learning.</p>
-    </div>
-  </div>
-
-  <a-scene embedded style="height:500px; width:100%;">
+  <a-scene embedded style="height: 600px; width: 100%;">
     <a-assets>
-      <img id="panel" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1200">
-      <img id="ai" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200">
+      <img id="floorTex" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      <img id="panelImg" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1200">
+      <img id="aiImg" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200">
+      <img id="safetyImg" src="https://images.unsplash.com/photo-1574359411659-15573f91a527?q=80&w=1200">
     </a-assets>
 
-    <a-image src="#panel" position="-1 1.5 -3" width="1.5" height="1"></a-image>
-    <a-image src="#ai" position="1 1.5 -3" width="1.5" height="1"></a-image>
+    <!-- Lights -->
+    <a-entity light="type: ambient; intensity: 1"></a-entity>
+    <a-entity light="type: directional; intensity: 0.8" position="1 3 2"></a-entity>
 
-    <a-text value="Electrical Station" position="-1 2.3 -3" align="center" color="#111827"></a-text>
-    <a-text value="AI Tutor Desk" position="1 2.3 -3" align="center" color="#111827"></a-text>
+    <!-- Floor -->
+    <a-plane
+      position="0 0 -4"
+      rotation="-90 0 0"
+      width="12"
+      height="12"
+      src="#floorTex"
+      repeat="6 6">
+    </a-plane>
 
-    <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="8" color="#e5e7eb"></a-plane>
-    <a-sky color="#eef2ff"></a-sky>
-    <a-camera position="0 1.6 0"></a-camera>
+    <!-- Back wall -->
+    <a-plane position="0 2 -8" width="12" height="4" color="#eef2ff"></a-plane>
+
+    <!-- Left wall -->
+    <a-plane position="-6 2 -4" rotation="0 90 0" width="8" height="4" color="#f8fafc"></a-plane>
+
+    <!-- Right wall -->
+    <a-plane position="6 2 -4" rotation="0 -90 0" width="8" height="4" color="#f8fafc"></a-plane>
+
+    <!-- Ceiling -->
+    <a-plane position="0 4 -4" rotation="90 0 0" width="12" height="12" color="#ffffff"></a-plane>
+
+    <!-- Station 1 -->
+    <a-image
+      id="panelStation"
+      src="#panelImg"
+      position="-3 1.8 -6"
+      width="2"
+      height="1.3"
+      class="clickable">
+    </a-image>
+    <a-text
+      value="Electrical Station"
+      position="-3 0.9 -6"
+      align="center"
+      color="#111827"
+      width="6">
+    </a-text>
+
+    <!-- Station 2 -->
+    <a-image
+      id="aiStation"
+      src="#aiImg"
+      position="0 1.8 -6"
+      width="2"
+      height="1.3"
+      class="clickable">
+    </a-image>
+    <a-text
+      value="AI Tutor Desk"
+      position="0 0.9 -6"
+      align="center"
+      color="#111827"
+      width="6">
+    </a-text>
+
+    <!-- Station 3 -->
+    <a-image
+      id="safetyStation"
+      src="#safetyImg"
+      position="3 1.8 -6"
+      width="2"
+      height="1.3"
+      class="clickable">
+    </a-image>
+    <a-text
+      value="Safety Corner"
+      position="3 0.9 -6"
+      align="center"
+      color="#111827"
+      width="6">
+    </a-text>
+
+    <!-- Simple objects for 3D feeling -->
+    <a-box position="-3 0.5 -4" depth="1" height="1" width="1" color="#93c5fd"></a-box>
+    <a-cylinder position="0 0.75 -4" radius="0.5" height="1.5" color="#86efac"></a-cylinder>
+    <a-sphere position="3 1 -4" radius="0.8" color="#fca5a5"></a-sphere>
+
+    <!-- Camera rig -->
+    <a-entity id="rig" position="0 1.6 1.5">
+      <a-camera wasd-controls="acceleration: 20" look-controls="pointerLockEnabled: false">
+        <a-cursor color="#2563eb"></a-cursor>
+      </a-camera>
+    </a-entity>
+
+    <a-sky color="#dbeafe"></a-sky>
   </a-scene>
+
+  <script>
+    const rig = document.querySelector('#rig');
+
+    document.querySelector('#panelStation').addEventListener('click', () => {
+      rig.setAttribute('position', '-3 1.6 -3');
+    });
+
+    document.querySelector('#aiStation').addEventListener('click', () => {
+      rig.setAttribute('position', '0 1.6 -3');
+    });
+
+    document.querySelector('#safetyStation').addEventListener('click', () => {
+      rig.setAttribute('position', '3 1.6 -3');
+    });
+  </script>
 </body>
 </html>
