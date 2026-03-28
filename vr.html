@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VR Workshop for TVET</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb}
+    .topbar{
+      padding:14px 18px;
+      background:linear-gradient(135deg,#dbeafe,#ffffff);
+      text-align:center;
+      color:#1f2937;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">VR Workshop for TVET — Click a station and explore the 3D room</div>
 
+  <a-scene embedded style="height: calc(100vh - 52px); width: 100%;" renderer="antialias:true; colorManagement:true">
+    <a-entity light="type: ambient; intensity: 1"></a-entity>
+    <a-entity light="type: directional; intensity: 0.9" position="2 4 2"></a-entity>
+
+    <!-- Room -->
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="14" height="14" color="#e5e7eb"></a-plane>
+    <a-plane position="0 2 -8" width="14" height="4" color="#eef2ff"></a-plane>
+    <a-plane position="-7 2 -4" rotation="0 90 0" width="8" height="4" color="#f8fafc"></a-plane>
+    <a-plane position="7 2 -4" rotation="0 -90 0" width="8" height="4" color="#f8fafc"></a-plane>
+    <a-plane position="0 4 -4" rotation="90 0 0" width="14" height="14" color="#ffffff"></a-plane>
+
+    <!-- Electrical station -->
+    <a-box id="stationElectrical" position="-4 1.2 -5.5" width="1.8" height="2.2" depth="0.15" color="#93c5fd"></a-box>
+    <a-box position="-4.45 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#0f172a"></a-box>
+    <a-box position="-4 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#eab308"></a-box>
+    <a-box position="-3.55 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#ef4444"></a-box>
+    <a-text value="Electrical Station" position="-4 2.7 -5.3" align="center" color="#111827" width="6"></a-text>
+
+    <!-- AI desk -->
+    <a-box id="stationAI" position="0 0.55 -5" width="2.2" height="0.15" depth="1.1" color="#8b5cf6"></a-box>
+    <a-box position="0 1.05 -5" width="1.2" height="0.7" depth="0.08" color="#111827"></a-box>
+    <a-plane position="0 1.05 -4.95" width="1.05" height="0.55" color="#22d3ee"></a-plane>
+    <a-text value="AI Tutor Desk" position="0 2.2 -5" align="center" color="#111827" width="6"></a-text>
+
+    <!-- Safety station -->
+    <a-cone id="stationSafety" position="4 0.6 -5.2" radius-bottom="0.45" radius-top="0.05" height="1.2" color="#f59e0b"></a-cone>
+    <a-ring position="4 1.7 -5.12" radius-inner="0.18" radius-outer="0.28" color="#ef4444"></a-ring>
+    <a-text value="Safety Corner" position="4 2.4 -5.1" align="center" color="#111827" width="6"></a-text>
+
+    <!-- Camera -->
+    <a-entity id="rig" position="0 1.6 2">
+      <a-camera wasd-controls="acceleration: 20" look-controls="pointerLockEnabled: false">
+        <a-cursor color="#2563eb"></a-cursor>
+      </a-camera>
+    </a-entity>
+
+    <a-sky color="#dbeafe"></a-sky>
+  </a-scene>
+
+  <script>
+    const rig = document.querySelector('#rig');
+    document.querySelector('#stationElectrical').addEventListener('click', () => {
+      rig.setAttribute('position', '-4 1.6 -2.9');
+    });
+    document.querySelector('#stationAI').addEventListener('click', () => {
+      rig.setAttribute('position', '0 1.6 -2.7');
+    });
+    document.querySelector('#stationSafety').addEventListener('click', () => {
+      rig.setAttribute('position', '4 1.6 -2.9');
+    });
+  </script>
+</body>
+</html>
