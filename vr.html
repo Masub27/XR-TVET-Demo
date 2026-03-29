@@ -8,7 +8,11 @@
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f5f7fb; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+    }
 
     .topbar {
       padding: 14px;
@@ -16,6 +20,20 @@
       background: linear-gradient(135deg, #dbeafe, #ffffff);
       font-weight: bold;
       color: #1f2937;
+    }
+
+    .status {
+      position: fixed;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.95);
+      padding: 10px 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      z-index: 9999;
+      font-size: 14px;
+      color: #111827;
     }
   </style>
 </head>
@@ -26,95 +44,121 @@
   VR Workshop – Click station + Play training video
 </div>
 
-<a-scene embedded style="height: calc(100vh - 52px); width: 100%;">
+<div class="status" id="statusBox">Status: ready</div>
 
-  <!-- 🎥 VIDEO ASSET -->
+<a-scene embedded style="height: calc(100vh - 52px); width: 100%;" cursor="rayOrigin: mouse">
+
   <a-assets>
-    <video id="video1"
+    <video
+      id="video1"
       src="https://raw.githubusercontent.com/Masub27/XR-TVET-Demo/main/Quick%20Avatar%20Video_1080p.mp4"
       preload="auto"
       crossorigin="anonymous"
       webkit-playsinline
-      playsinline>
+      playsinline
+      muted
+      loop>
     </video>
   </a-assets>
 
-  <!-- 💡 LIGHT -->
   <a-entity light="type: ambient; intensity: 1"></a-entity>
   <a-entity light="type: directional; intensity: 0.9" position="2 4 2"></a-entity>
 
-  <!-- 🏠 ROOM -->
+  <!-- Room -->
   <a-plane position="0 0 -4" rotation="-90 0 0" width="14" height="14" color="#e5e7eb"></a-plane>
   <a-plane position="0 2 -8" width="14" height="4" color="#eef2ff"></a-plane>
   <a-plane position="-7 2 -4" rotation="0 90 0" width="8" height="4" color="#f8fafc"></a-plane>
   <a-plane position="7 2 -4" rotation="0 -90 0" width="8" height="4" color="#f8fafc"></a-plane>
   <a-plane position="0 4 -4" rotation="90 0 0" width="14" height="14" color="#ffffff"></a-plane>
 
-  <!-- ⚡ ELECTRICAL STATION -->
-  <a-box id="stationElectrical" position="-4 1.2 -5.5" width="1.8" height="2.2" depth="0.15" color="#93c5fd"></a-box>
+  <!-- Stations -->
+  <a-box id="stationElectrical" position="-4 1.2 -5.5" width="1.8" height="2.2" depth="0.15" color="#93c5fd" class="clickable"></a-box>
   <a-text value="Electrical Station" position="-4 2.7 -5.3" align="center" color="#111827" width="6"></a-text>
 
-  <!-- 🤖 AI STATION -->
-  <a-box id="stationAI" position="0 0.55 -5" width="2.2" height="0.15" depth="1.1" color="#8b5cf6"></a-box>
+  <a-box id="stationAI" position="0 0.55 -5" width="2.2" height="0.15" depth="1.1" color="#8b5cf6" class="clickable"></a-box>
   <a-text value="AI Tutor Desk" position="0 2.2 -5" align="center" color="#111827" width="6"></a-text>
 
-  <!-- 🦺 SAFETY STATION -->
-  <a-cone id="stationSafety" position="4 0.6 -5.2" radius-bottom="0.45" radius-top="0.05" height="1.2" color="#f59e0b"></a-cone>
+  <a-cone id="stationSafety" position="4 0.6 -5.2" radius-bottom="0.45" radius-top="0.05" height="1.2" color="#f59e0b" class="clickable"></a-cone>
   <a-text value="Safety Corner" position="4 2.4 -5.1" align="center" color="#111827" width="6"></a-text>
 
-  <!-- 🎥 VIDEO SCREEN -->
-  <a-video 
+  <!-- Video screen -->
+  <a-video
+    id="videoScreen"
     src="#video1"
     position="0 2 -6"
     width="4"
     height="2.2">
   </a-video>
 
-  <!-- ▶ PLAY BUTTON -->
-  <a-box id="playBtn"
-    position="0 0.8 -5.5"
-    width="1.5"
-    height="0.4"
+  <!-- Play button -->
+  <a-box
+    id="playBtn"
+    position="0 0.8 -5.3"
+    width="2"
+    height="0.6"
     depth="0.2"
-    color="#2563eb">
+    color="#2563eb"
+    class="clickable">
   </a-box>
 
-  <a-text 
+  <a-text
     value="Play Video"
-    position="0 0.8 -5.3"
+    position="0 0.8 -5.15"
     align="center"
     color="#ffffff"
-    width="4">
+    width="5">
   </a-text>
 
-  <!-- 🎥 CAMERA -->
+  <!-- Camera -->
   <a-entity id="rig" position="0 1.6 2">
-    <a-camera wasd-controls="acceleration: 20" look-controls="pointerLockEnabled: false">
-      <a-cursor color="#2563eb"></a-cursor>
-    </a-camera>
+    <a-camera wasd-controls="acceleration: 20" look-controls="pointerLockEnabled: false"></a-camera>
   </a-entity>
 
   <a-sky color="#dbeafe"></a-sky>
-
 </a-scene>
 
 <script>
   const rig = document.querySelector('#rig');
+  const video = document.querySelector('#video1');
+  const playBtn = document.querySelector('#playBtn');
+  const statusBox = document.querySelector('#statusBox');
+
+  function setStatus(message) {
+    statusBox.textContent = "Status: " + message;
+    console.log(message);
+  }
 
   document.querySelector('#stationElectrical').addEventListener('click', () => {
     rig.setAttribute('position', '-4 1.6 -2.9');
+    setStatus('moved to Electrical Station');
   });
 
   document.querySelector('#stationAI').addEventListener('click', () => {
     rig.setAttribute('position', '0 1.6 -2.7');
+    setStatus('moved to AI Tutor Desk');
   });
 
   document.querySelector('#stationSafety').addEventListener('click', () => {
     rig.setAttribute('position', '4 1.6 -2.9');
+    setStatus('moved to Safety Corner');
   });
 
-  document.querySelector('#playBtn').addEventListener('click', () => {
-    document.querySelector('#video1').play();
+  playBtn.addEventListener('click', async () => {
+    try {
+      video.currentTime = 0;
+      await video.play();
+      setStatus('video playing');
+    } catch (err) {
+      setStatus('play failed: ' + err.message);
+    }
+  });
+
+  video.addEventListener('loadeddata', () => {
+    setStatus('video loaded');
+  });
+
+  video.addEventListener('error', () => {
+    setStatus('video failed to load');
   });
 </script>
 
