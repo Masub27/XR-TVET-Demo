@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VR Workshop with Video - TVET</title>
+  <title>VR Workshop for TVET</title>
 
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
@@ -15,14 +15,14 @@
     }
 
     .topbar {
-      padding: 14px;
-      text-align: center;
+      padding: 14px 18px;
       background: linear-gradient(135deg, #dbeafe, #ffffff);
-      font-weight: bold;
+      text-align: center;
       color: #1f2937;
+      font-weight: bold;
     }
 
-    .status {
+    .note {
       position: fixed;
       top: 60px;
       left: 50%;
@@ -37,30 +37,23 @@
     }
   </style>
 </head>
-
 <body>
 
 <div class="topbar">
-  VR Workshop – Click station + Play training video
+  VR Workshop for TVET — Click stations and test the electronic device
 </div>
 
-<div class="status" id="statusBox">Status: ready</div>
+<div class="note">
+  Click the blue electrical panel, purple AI desk, orange safety corner, or the electronic device switch.
+</div>
 
-<a-scene embedded style="height: calc(100vh - 52px); width: 100%;" cursor="rayOrigin: mouse">
+<a-scene
+  embedded
+  style="height: calc(100vh - 52px); width: 100%;"
+  renderer="antialias: true; colorManagement: true"
+  cursor="rayOrigin: mouse">
 
-  <a-assets>
-    <video
-      id="video1"
-      src="https://raw.githubusercontent.com/Masub27/XR-TVET-Demo/main/Quick%20Avatar%20Video_1080p.mp4"
-      preload="auto"
-      crossorigin="anonymous"
-      webkit-playsinline
-      playsinline
-      muted
-      loop>
-    </video>
-  </a-assets>
-
+  <!-- Lights -->
   <a-entity light="type: ambient; intensity: 1"></a-entity>
   <a-entity light="type: directional; intensity: 0.9" position="2 4 2"></a-entity>
 
@@ -71,47 +64,154 @@
   <a-plane position="7 2 -4" rotation="0 -90 0" width="8" height="4" color="#f8fafc"></a-plane>
   <a-plane position="0 4 -4" rotation="90 0 0" width="14" height="14" color="#ffffff"></a-plane>
 
-  <!-- Stations -->
-  <a-box id="stationElectrical" position="-4 1.2 -5.5" width="1.8" height="2.2" depth="0.15" color="#93c5fd" class="clickable"></a-box>
-  <a-text value="Electrical Station" position="-4 2.7 -5.3" align="center" color="#111827" width="6"></a-text>
-
-  <a-box id="stationAI" position="0 0.55 -5" width="2.2" height="0.15" depth="1.1" color="#8b5cf6" class="clickable"></a-box>
-  <a-text value="AI Tutor Desk" position="0 2.2 -5" align="center" color="#111827" width="6"></a-text>
-
-  <a-cone id="stationSafety" position="4 0.6 -5.2" radius-bottom="0.45" radius-top="0.05" height="1.2" color="#f59e0b" class="clickable"></a-cone>
-  <a-text value="Safety Corner" position="4 2.4 -5.1" align="center" color="#111827" width="6"></a-text>
-
-  <!-- Video screen -->
-  <a-video
-    id="videoScreen"
-    src="#video1"
-    position="0 2 -6"
-    width="4"
-    height="2.2">
-  </a-video>
-
-  <!-- Play button -->
+  <!-- Electrical Station -->
   <a-box
-    id="playBtn"
-    position="0 0.8 -5.3"
-    width="2"
-    height="0.6"
-    depth="0.2"
-    color="#2563eb"
+    id="stationElectrical"
+    position="-4 1.2 -5.5"
+    width="1.8"
+    height="2.2"
+    depth="0.15"
+    color="#93c5fd"
     class="clickable">
   </a-box>
 
+  <a-box position="-4.45 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#0f172a"></a-box>
+  <a-box position="-4 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#eab308"></a-box>
+  <a-box position="-3.55 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#ef4444"></a-box>
+  <a-box position="-4.45 0.85 -5.38" width="0.22" height="0.22" depth="0.04" color="#22c55e"></a-box>
+  <a-box position="-4 0.85 -5.38" width="0.22" height="0.22" depth="0.04" color="#38bdf8"></a-box>
+  <a-box position="-3.55 0.85 -5.38" width="0.22" height="0.22" depth="0.04" color="#f97316"></a-box>
+
   <a-text
-    value="Play Video"
-    position="0 0.8 -5.15"
+    value="Electrical Station"
+    position="-4 2.7 -5.3"
     align="center"
-    color="#ffffff"
+    color="#111827"
+    width="6">
+  </a-text>
+
+  <!-- AI Tutor Desk -->
+  <a-box
+    id="stationAI"
+    position="0 0.55 -5"
+    width="2.2"
+    height="0.15"
+    depth="1.1"
+    color="#8b5cf6"
+    class="clickable">
+  </a-box>
+
+  <a-box position="-0.9 0.25 -5.35" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
+  <a-box position="0.9 0.25 -5.35" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
+  <a-box position="-0.9 0.25 -4.65" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
+  <a-box position="0.9 0.25 -4.65" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
+  <a-box position="0 1.05 -5" width="1.2" height="0.7" depth="0.08" color="#111827"></a-box>
+  <a-plane position="0 1.05 -4.95" width="1.05" height="0.55" color="#22d3ee"></a-plane>
+  <a-cylinder position="0 0.72 -4.55" radius="0.08" height="0.05" color="#374151"></a-cylinder>
+
+  <a-text
+    value="AI Tutor Desk"
+    position="0 2.2 -5"
+    align="center"
+    color="#111827"
+    width="6">
+  </a-text>
+
+  <!-- Safety Corner -->
+  <a-cone
+    id="stationSafety"
+    position="4 0.6 -5.2"
+    radius-bottom="0.45"
+    radius-top="0.05"
+    height="1.2"
+    color="#f59e0b"
+    class="clickable">
+  </a-cone>
+
+  <a-box position="4 1.45 -5.2" width="0.6" height="0.2" depth="0.1" color="#111827"></a-box>
+  <a-box position="4 0.1 -5.2" width="1.3" height="0.08" depth="1.3" color="#fcd34d"></a-box>
+  <a-ring position="4 1.7 -5.12" radius-inner="0.18" radius-outer="0.28" color="#ef4444"></a-ring>
+
+  <a-text
+    value="Safety Corner"
+    position="4 2.4 -5.1"
+    align="center"
+    color="#111827"
+    width="6">
+  </a-text>
+
+  <!-- Electronic Equipment Demo -->
+  <a-box
+    id="deviceBody"
+    position="0 1 -3.2"
+    width="1.4"
+    height="0.8"
+    depth="0.8"
+    color="#475569"
+    class="clickable">
+  </a-box>
+
+  <!-- Indicator -->
+  <a-sphere
+    id="indicatorLight"
+    position="-0.35 1.15 -2.77"
+    radius="0.08"
+    color="#ef4444">
+  </a-sphere>
+
+  <!-- Power Switch -->
+  <a-box
+    id="powerSwitch"
+    position="0 1.05 -2.77"
+    width="0.18"
+    height="0.1"
+    depth="0.05"
+    color="#111827"
+    class="clickable">
+  </a-box>
+
+  <!-- Fan Center -->
+  <a-cylinder
+    position="0.35 1.05 -2.77"
+    radius="0.08"
+    height="0.03"
+    rotation="90 0 0"
+    color="#111827">
+  </a-cylinder>
+
+  <!-- Fan Blades -->
+  <a-entity id="fanBlades" position="0.35 1.05 -2.76">
+    <a-box position="0 0 0" width="0.45" height="0.03" depth="0.02" color="#cbd5e1"></a-box>
+    <a-box position="0 0 0" width="0.03" height="0.45" depth="0.02" color="#cbd5e1"></a-box>
+  </a-entity>
+
+  <a-text
+    id="deviceStatus"
+    value="Device: OFF"
+    position="0 1.75 -3.2"
+    align="center"
+    color="#111827"
     width="5">
   </a-text>
 
+  <a-text
+    value="Interactive Electronic Device"
+    position="0 0.35 -3.2"
+    align="center"
+    color="#2563eb"
+    width="6">
+  </a-text>
+
+  <!-- Extra room objects -->
+  <a-box position="-5.8 0.5 -2.8" width="0.8" height="1" depth="0.8" color="#64748b"></a-box>
+  <a-box position="5.6 0.35 -3" width="1.1" height="0.7" depth="1.1" color="#94a3b8"></a-box>
+  <a-cylinder position="2.2 0.6 -3.3" radius="0.35" height="1.2" color="#10b981"></a-cylinder>
+
   <!-- Camera -->
   <a-entity id="rig" position="0 1.6 2">
-    <a-camera wasd-controls="acceleration: 20" look-controls="pointerLockEnabled: false"></a-camera>
+    <a-camera wasd-controls="acceleration: 20" look-controls="pointerLockEnabled: false">
+      <a-cursor color="#2563eb"></a-cursor>
+    </a-camera>
   </a-entity>
 
   <a-sky color="#dbeafe"></a-sky>
@@ -119,47 +219,62 @@
 
 <script>
   const rig = document.querySelector('#rig');
-  const video = document.querySelector('#video1');
-  const playBtn = document.querySelector('#playBtn');
-  const statusBox = document.querySelector('#statusBox');
-
-  function setStatus(message) {
-    statusBox.textContent = "Status: " + message;
-    console.log(message);
-  }
 
   document.querySelector('#stationElectrical').addEventListener('click', () => {
     rig.setAttribute('position', '-4 1.6 -2.9');
-    setStatus('moved to Electrical Station');
   });
 
   document.querySelector('#stationAI').addEventListener('click', () => {
     rig.setAttribute('position', '0 1.6 -2.7');
-    setStatus('moved to AI Tutor Desk');
   });
 
   document.querySelector('#stationSafety').addEventListener('click', () => {
     rig.setAttribute('position', '4 1.6 -2.9');
-    setStatus('moved to Safety Corner');
   });
 
-  playBtn.addEventListener('click', async () => {
-    try {
-      video.currentTime = 0;
-      await video.play();
-      setStatus('video playing');
-    } catch (err) {
-      setStatus('play failed: ' + err.message);
+  let deviceOn = false;
+  let fanInterval = null;
+  let fanRotation = 0;
+
+  const indicatorLight = document.querySelector('#indicatorLight');
+  const powerSwitch = document.querySelector('#powerSwitch');
+  const fanBlades = document.querySelector('#fanBlades');
+  const deviceStatus = document.querySelector('#deviceStatus');
+  const deviceBody = document.querySelector('#deviceBody');
+
+  function startFan() {
+    if (fanInterval) return;
+    fanInterval = setInterval(() => {
+      fanRotation += 15;
+      fanBlades.setAttribute('rotation', `0 0 ${fanRotation}`);
+    }, 50);
+  }
+
+  function stopFan() {
+    clearInterval(fanInterval);
+    fanInterval = null;
+  }
+
+  function toggleDevice() {
+    deviceOn = !deviceOn;
+
+    if (deviceOn) {
+      indicatorLight.setAttribute('color', '#22c55e');
+      powerSwitch.setAttribute('rotation', '0 0 -20');
+      deviceStatus.setAttribute('value', 'Device: ON');
+      deviceBody.setAttribute('color', '#64748b');
+      startFan();
+    } else {
+      indicatorLight.setAttribute('color', '#ef4444');
+      powerSwitch.setAttribute('rotation', '0 0 0');
+      deviceStatus.setAttribute('value', 'Device: OFF');
+      deviceBody.setAttribute('color', '#475569');
+      stopFan();
     }
-  });
+  }
 
-  video.addEventListener('loadeddata', () => {
-    setStatus('video loaded');
-  });
-
-  video.addEventListener('error', () => {
-    setStatus('video failed to load');
-  });
+  deviceBody.addEventListener('click', toggleDevice);
+  powerSwitch.addEventListener('click', toggleDevice);
 </script>
 
 </body>
