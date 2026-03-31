@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VR Workshop for TVET</title>
+  <title>VR Workshop for TVET - Advanced Demo</title>
 
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
@@ -34,17 +34,20 @@
       z-index: 9999;
       font-size: 14px;
       color: #111827;
+      text-align: center;
+      max-width: 700px;
     }
   </style>
 </head>
 <body>
 
 <div class="topbar">
-  VR Workshop for TVET — Click stations and test the electronic device
+  VR Workshop for TVET — Advanced Interactive Equipment Demo
 </div>
 
 <div class="note">
-  Click the blue electrical panel, purple AI desk, orange safety corner, or the electronic device switch.
+  Click the blue control machine or the black power switch.<br>
+  It will activate: blinking warning light, rotating fan, moving conveyor, and piston motion.
 </div>
 
 <a-scene
@@ -53,21 +56,21 @@
   renderer="antialias: true; colorManagement: true"
   cursor="rayOrigin: mouse">
 
-  <!-- Lights -->
+  <!-- Lighting -->
   <a-entity light="type: ambient; intensity: 1"></a-entity>
   <a-entity light="type: directional; intensity: 0.9" position="2 4 2"></a-entity>
 
   <!-- Room -->
-  <a-plane position="0 0 -4" rotation="-90 0 0" width="14" height="14" color="#e5e7eb"></a-plane>
-  <a-plane position="0 2 -8" width="14" height="4" color="#eef2ff"></a-plane>
-  <a-plane position="-7 2 -4" rotation="0 90 0" width="8" height="4" color="#f8fafc"></a-plane>
-  <a-plane position="7 2 -4" rotation="0 -90 0" width="8" height="4" color="#f8fafc"></a-plane>
-  <a-plane position="0 4 -4" rotation="90 0 0" width="14" height="14" color="#ffffff"></a-plane>
+  <a-plane position="0 0 -4" rotation="-90 0 0" width="16" height="16" color="#e5e7eb"></a-plane>
+  <a-plane position="0 2 -9" width="16" height="4" color="#eef2ff"></a-plane>
+  <a-plane position="-8 2 -4" rotation="0 90 0" width="10" height="4" color="#f8fafc"></a-plane>
+  <a-plane position="8 2 -4" rotation="0 -90 0" width="10" height="4" color="#f8fafc"></a-plane>
+  <a-plane position="0 4 -4" rotation="90 0 0" width="16" height="16" color="#ffffff"></a-plane>
 
-  <!-- Electrical Station -->
+  <!-- Station 1 -->
   <a-box
     id="stationElectrical"
-    position="-4 1.2 -5.5"
+    position="-5 1.2 -6.2"
     width="1.8"
     height="2.2"
     depth="0.15"
@@ -75,52 +78,44 @@
     class="clickable">
   </a-box>
 
-  <a-box position="-4.45 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#0f172a"></a-box>
-  <a-box position="-4 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#eab308"></a-box>
-  <a-box position="-3.55 1.4 -5.38" width="0.22" height="0.22" depth="0.04" color="#ef4444"></a-box>
-  <a-box position="-4.45 0.85 -5.38" width="0.22" height="0.22" depth="0.04" color="#22c55e"></a-box>
-  <a-box position="-4 0.85 -5.38" width="0.22" height="0.22" depth="0.04" color="#38bdf8"></a-box>
-  <a-box position="-3.55 0.85 -5.38" width="0.22" height="0.22" depth="0.04" color="#f97316"></a-box>
+  <a-box position="-5.45 1.4 -6.08" width="0.22" height="0.22" depth="0.04" color="#0f172a"></a-box>
+  <a-box position="-5 1.4 -6.08" width="0.22" height="0.22" depth="0.04" color="#eab308"></a-box>
+  <a-box position="-4.55 1.4 -6.08" width="0.22" height="0.22" depth="0.04" color="#ef4444"></a-box>
 
   <a-text
     value="Electrical Station"
-    position="-4 2.7 -5.3"
+    position="-5 2.7 -6"
     align="center"
     color="#111827"
     width="6">
   </a-text>
 
-  <!-- AI Tutor Desk -->
+  <!-- Station 2 -->
   <a-box
     id="stationAI"
-    position="0 0.55 -5"
-    width="2.2"
+    position="0 0.55 -6"
+    width="2.4"
     height="0.15"
-    depth="1.1"
+    depth="1.2"
     color="#8b5cf6"
     class="clickable">
   </a-box>
 
-  <a-box position="-0.9 0.25 -5.35" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
-  <a-box position="0.9 0.25 -5.35" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
-  <a-box position="-0.9 0.25 -4.65" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
-  <a-box position="0.9 0.25 -4.65" width="0.12" height="0.5" depth="0.12" color="#4c1d95"></a-box>
-  <a-box position="0 1.05 -5" width="1.2" height="0.7" depth="0.08" color="#111827"></a-box>
-  <a-plane position="0 1.05 -4.95" width="1.05" height="0.55" color="#22d3ee"></a-plane>
-  <a-cylinder position="0 0.72 -4.55" radius="0.08" height="0.05" color="#374151"></a-cylinder>
+  <a-box position="0 1.05 -6" width="1.2" height="0.7" depth="0.08" color="#111827"></a-box>
+  <a-plane position="0 1.05 -5.94" width="1.05" height="0.55" color="#22d3ee"></a-plane>
 
   <a-text
     value="AI Tutor Desk"
-    position="0 2.2 -5"
+    position="0 2.2 -6"
     align="center"
     color="#111827"
     width="6">
   </a-text>
 
-  <!-- Safety Corner -->
+  <!-- Station 3 -->
   <a-cone
     id="stationSafety"
-    position="4 0.6 -5.2"
+    position="5 0.6 -6.2"
     radius-bottom="0.45"
     radius-top="0.05"
     height="1.2"
@@ -128,41 +123,47 @@
     class="clickable">
   </a-cone>
 
-  <a-box position="4 1.45 -5.2" width="0.6" height="0.2" depth="0.1" color="#111827"></a-box>
-  <a-box position="4 0.1 -5.2" width="1.3" height="0.08" depth="1.3" color="#fcd34d"></a-box>
-  <a-ring position="4 1.7 -5.12" radius-inner="0.18" radius-outer="0.28" color="#ef4444"></a-ring>
+  <a-ring position="5 1.7 -6.12" radius-inner="0.18" radius-outer="0.28" color="#ef4444"></a-ring>
 
   <a-text
     value="Safety Corner"
-    position="4 2.4 -5.1"
+    position="5 2.4 -6"
     align="center"
     color="#111827"
     width="6">
   </a-text>
 
-  <!-- Electronic Equipment Demo -->
+  <!-- Main Machine -->
   <a-box
-    id="deviceBody"
+    id="machineBody"
     position="0 1 -3.2"
-    width="1.4"
-    height="0.8"
-    depth="0.8"
-    color="#475569"
+    width="2.1"
+    height="1"
+    depth="1"
+    color="#2563eb"
     class="clickable">
   </a-box>
 
-  <!-- Indicator -->
+  <!-- Power light -->
   <a-sphere
     id="indicatorLight"
-    position="-0.35 1.15 -2.77"
-    radius="0.08"
+    position="-0.7 1.22 -2.67"
+    radius="0.09"
     color="#ef4444">
   </a-sphere>
 
-  <!-- Power Switch -->
+  <!-- Warning blinking light -->
+  <a-sphere
+    id="warningLight"
+    position="-0.35 1.22 -2.67"
+    radius="0.09"
+    color="#7f1d1d">
+  </a-sphere>
+
+  <!-- Power switch -->
   <a-box
     id="powerSwitch"
-    position="0 1.05 -2.77"
+    position="0.05 1.12 -2.67"
     width="0.18"
     height="0.1"
     depth="0.05"
@@ -170,42 +171,73 @@
     class="clickable">
   </a-box>
 
-  <!-- Fan Center -->
+  <!-- Fan housing -->
   <a-cylinder
-    position="0.35 1.05 -2.77"
-    radius="0.08"
-    height="0.03"
+    position="0.7 1.12 -2.67"
+    radius="0.12"
+    height="0.06"
     rotation="90 0 0"
     color="#111827">
   </a-cylinder>
 
-  <!-- Fan Blades -->
-  <a-entity id="fanBlades" position="0.35 1.05 -2.76">
-    <a-box position="0 0 0" width="0.45" height="0.03" depth="0.02" color="#cbd5e1"></a-box>
-    <a-box position="0 0 0" width="0.03" height="0.45" depth="0.02" color="#cbd5e1"></a-box>
+  <!-- Fan blades -->
+  <a-entity id="fanBlades" position="0.7 1.12 -2.64">
+    <a-box position="0 0 0" width="0.52" height="0.03" depth="0.02" color="#cbd5e1"></a-box>
+    <a-box position="0 0 0" width="0.03" height="0.52" depth="0.02" color="#cbd5e1"></a-box>
   </a-entity>
 
+  <!-- Machine labels -->
   <a-text
-    id="deviceStatus"
-    value="Device: OFF"
-    position="0 1.75 -3.2"
+    id="machineStatus"
+    value="Machine: OFF"
+    position="0 1.95 -3.2"
+    align="center"
+    color="#111827"
+    width="6">
+  </a-text>
+
+  <a-text
+    value="Interactive Control Machine"
+    position="0 0.25 -3.2"
+    align="center"
+    color="#2563eb"
+    width="7">
+  </a-text>
+
+  <!-- Conveyor system -->
+  <a-box position="-3 0.35 -3.3" width="2.6" height="0.2" depth="1" color="#64748b"></a-box>
+  <a-cylinder position="-4.15 0.35 -3.3" radius="0.18" height="1" rotation="90 0 0" color="#334155"></a-cylinder>
+  <a-cylinder position="-1.85 0.35 -3.3" radius="0.18" height="1" rotation="90 0 0" color="#334155"></a-cylinder>
+
+  <!-- Conveyor items -->
+  <a-box id="item1" position="-4 0.58 -3.1" width="0.22" height="0.22" depth="0.22" color="#f97316"></a-box>
+  <a-box id="item2" position="-3.35 0.58 -3.3" width="0.22" height="0.22" depth="0.22" color="#22c55e"></a-box>
+  <a-box id="item3" position="-2.7 0.58 -3.5" width="0.22" height="0.22" depth="0.22" color="#eab308"></a-box>
+
+  <a-text
+    value="Conveyor Demo"
+    position="-3 1.15 -3.3"
     align="center"
     color="#111827"
     width="5">
   </a-text>
 
+  <!-- Piston / press system -->
+  <a-box position="3.1 0.25 -3.3" width="1.5" height="0.5" depth="1.2" color="#94a3b8"></a-box>
+  <a-cylinder position="3.1 1.9 -3.3" radius="0.14" height="1.6" color="#6b7280"></a-cylinder>
+  <a-box id="pistonHead" position="3.1 1.2 -3.3" width="0.65" height="0.25" depth="0.65" color="#111827"></a-box>
+
   <a-text
-    value="Interactive Electronic Device"
-    position="0 0.35 -3.2"
+    value="Press Unit"
+    position="3.1 2.35 -3.3"
     align="center"
-    color="#2563eb"
-    width="6">
+    color="#111827"
+    width="5">
   </a-text>
 
-  <!-- Extra room objects -->
-  <a-box position="-5.8 0.5 -2.8" width="0.8" height="1" depth="0.8" color="#64748b"></a-box>
-  <a-box position="5.6 0.35 -3" width="1.1" height="0.7" depth="1.1" color="#94a3b8"></a-box>
-  <a-cylinder position="2.2 0.6 -3.3" radius="0.35" height="1.2" color="#10b981"></a-cylinder>
+  <!-- Extra objects -->
+  <a-box position="-6.8 0.5 -2.6" width="0.8" height="1" depth="0.8" color="#64748b"></a-box>
+  <a-cylinder position="6.2 0.7 -3.6" radius="0.35" height="1.4" color="#10b981"></a-cylinder>
 
   <!-- Camera -->
   <a-entity id="rig" position="0 1.6 2">
@@ -221,33 +253,55 @@
   const rig = document.querySelector('#rig');
 
   document.querySelector('#stationElectrical').addEventListener('click', () => {
-    rig.setAttribute('position', '-4 1.6 -2.9');
+    rig.setAttribute('position', '-5 1.6 -3.5');
   });
 
   document.querySelector('#stationAI').addEventListener('click', () => {
-    rig.setAttribute('position', '0 1.6 -2.7');
+    rig.setAttribute('position', '0 1.6 -3.3');
   });
 
   document.querySelector('#stationSafety').addEventListener('click', () => {
-    rig.setAttribute('position', '4 1.6 -2.9');
+    rig.setAttribute('position', '5 1.6 -3.5');
   });
 
-  let deviceOn = false;
+  let machineOn = false;
+
   let fanInterval = null;
   let fanRotation = 0;
 
+  let blinkInterval = null;
+  let blinkState = false;
+
+  let conveyorInterval = null;
+  let pistonInterval = null;
+  let pistonDirection = -1;
+  let pistonY = 1.2;
+
   const indicatorLight = document.querySelector('#indicatorLight');
+  const warningLight = document.querySelector('#warningLight');
   const powerSwitch = document.querySelector('#powerSwitch');
   const fanBlades = document.querySelector('#fanBlades');
-  const deviceStatus = document.querySelector('#deviceStatus');
-  const deviceBody = document.querySelector('#deviceBody');
+  const machineStatus = document.querySelector('#machineStatus');
+  const machineBody = document.querySelector('#machineBody');
+
+  const item1 = document.querySelector('#item1');
+  const item2 = document.querySelector('#item2');
+  const item3 = document.querySelector('#item3');
+
+  const pistonHead = document.querySelector('#pistonHead');
+
+  let itemPositions = [
+    { x: -4.0, z: -3.1, el: item1 },
+    { x: -3.35, z: -3.3, el: item2 },
+    { x: -2.7, z: -3.5, el: item3 }
+  ];
 
   function startFan() {
     if (fanInterval) return;
     fanInterval = setInterval(() => {
-      fanRotation += 15;
+      fanRotation += 18;
       fanBlades.setAttribute('rotation', `0 0 ${fanRotation}`);
-    }, 50);
+    }, 40);
   }
 
   function stopFan() {
@@ -255,26 +309,98 @@
     fanInterval = null;
   }
 
-  function toggleDevice() {
-    deviceOn = !deviceOn;
+  function startBlinking() {
+    if (blinkInterval) return;
+    blinkInterval = setInterval(() => {
+      blinkState = !blinkState;
+      warningLight.setAttribute('color', blinkState ? '#facc15' : '#7f1d1d');
+    }, 350);
+  }
 
-    if (deviceOn) {
-      indicatorLight.setAttribute('color', '#22c55e');
-      powerSwitch.setAttribute('rotation', '0 0 -20');
-      deviceStatus.setAttribute('value', 'Device: ON');
-      deviceBody.setAttribute('color', '#64748b');
-      startFan();
+  function stopBlinking() {
+    clearInterval(blinkInterval);
+    blinkInterval = null;
+    warningLight.setAttribute('color', '#7f1d1d');
+  }
+
+  function startConveyor() {
+    if (conveyorInterval) return;
+    conveyorInterval = setInterval(() => {
+      itemPositions.forEach(obj => {
+        obj.x += 0.04;
+        if (obj.x > -1.9) {
+          obj.x = -4.2;
+        }
+        obj.el.setAttribute('position', `${obj.x} 0.58 ${obj.z}`);
+      });
+    }, 80);
+  }
+
+  function stopConveyor() {
+    clearInterval(conveyorInterval);
+    conveyorInterval = null;
+  }
+
+  function startPiston() {
+    if (pistonInterval) return;
+    pistonInterval = setInterval(() => {
+      pistonY += pistonDirection * 0.03;
+
+      if (pistonY <= 0.82) {
+        pistonDirection = 1;
+      }
+      if (pistonY >= 1.2) {
+        pistonDirection = -1;
+      }
+
+      pistonHead.setAttribute('position', `3.1 ${pistonY} -3.3`);
+    }, 60);
+  }
+
+  function stopPiston() {
+    clearInterval(pistonInterval);
+    pistonInterval = null;
+    pistonY = 1.2;
+    pistonDirection = -1;
+    pistonHead.setAttribute('position', '3.1 1.2 -3.3');
+  }
+
+  function turnMachineOn() {
+    machineOn = true;
+    indicatorLight.setAttribute('color', '#22c55e');
+    powerSwitch.setAttribute('rotation', '0 0 -20');
+    machineStatus.setAttribute('value', 'Machine: ON');
+    machineBody.setAttribute('color', '#3b82f6');
+
+    startFan();
+    startBlinking();
+    startConveyor();
+    startPiston();
+  }
+
+  function turnMachineOff() {
+    machineOn = false;
+    indicatorLight.setAttribute('color', '#ef4444');
+    powerSwitch.setAttribute('rotation', '0 0 0');
+    machineStatus.setAttribute('value', 'Machine: OFF');
+    machineBody.setAttribute('color', '#2563eb');
+
+    stopFan();
+    stopBlinking();
+    stopConveyor();
+    stopPiston();
+  }
+
+  function toggleMachine() {
+    if (machineOn) {
+      turnMachineOff();
     } else {
-      indicatorLight.setAttribute('color', '#ef4444');
-      powerSwitch.setAttribute('rotation', '0 0 0');
-      deviceStatus.setAttribute('value', 'Device: OFF');
-      deviceBody.setAttribute('color', '#475569');
-      stopFan();
+      turnMachineOn();
     }
   }
 
-  deviceBody.addEventListener('click', toggleDevice);
-  powerSwitch.addEventListener('click', toggleDevice);
+  machineBody.addEventListener('click', toggleMachine);
+  powerSwitch.addEventListener('click', toggleMachine);
 </script>
 
 </body>
